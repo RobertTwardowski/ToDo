@@ -1,10 +1,12 @@
 import React from 'react'
 import './App.css'
-import Userslist from 'components/UsersList/UsersList'
-import styled from 'styled-components'
+import Userslist from 'components/organisms/UsersList/UsersList'
+import styled, { ThemeProvider } from 'styled-components'
+import { GlobalStyle } from 'assets/styles/GlobalStyle'
+import {theme} from 'assets/styles/theme'
 
 const Wrapper = styled.div`
-  background-color: #f7f8fa;
+  background-color: ${({theme})=> theme.colors.LightGrey};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,9 +15,12 @@ const Wrapper = styled.div`
 
 function App () {
   return (
-    <Wrapper>
-      <Userslist />
-    </Wrapper>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle/>
+        <Wrapper>
+          <Userslist />
+        </Wrapper>
+    </ThemeProvider>
   )
 }
 

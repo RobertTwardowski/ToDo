@@ -1,5 +1,5 @@
 import React from 'react'
-import UsersListItem from './UsersListItem/UsersListItem'
+import UsersListItem from '../../molecules/UsersListItem/UsersListItem'
 import { users } from 'Data/Users'
 import styled from 'styled-components'
 
