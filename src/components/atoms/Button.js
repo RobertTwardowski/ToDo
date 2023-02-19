@@ -4,8 +4,8 @@ import styled from 'styled-components'
 
 
 const StyledButton = styled.button`
-width: 40px;
-height: 40px;
+width: 25px;
+height: 25px;
 background-color: ${({theme})=> theme.colors.grey};
 border-radius: 50px;
 border: none;

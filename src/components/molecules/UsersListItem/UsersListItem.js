@@ -18,15 +18,33 @@ function UsersListItem ({ userData: { average, name, attendance = '0%' } }) {
       background-color: lightgrey;
     }
   `
+  const Average= styled.div`
+  display: flex;
+  padding: 10px;
+  border-radius:50px;
+  flex: start;
+  margin: 1rem;
+  background: #333;
+  `
+  const StyledInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  p{
+    margin: 0;
+    padding-right: 1rem;
+  }
+  `
 
 
   return (
     <Wrapper>
-      <div>{average}</div>
-      <div>
+      <Average>{average}</Average>
+      <StyledInfo>
         <p>{name}</p>
-        <p>{attendance}</p>
-      </div>
+        <p>attendance:{attendance}</p>
+      </StyledInfo>
       <Button/>
     </Wrapper>
   )
