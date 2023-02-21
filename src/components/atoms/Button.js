@@ -1,30 +1,13 @@
 import React from 'react'
 import { ReactComponent as DeleteIcon } from 'assets/delete-icon.svg'
-import styled from 'styled-components'
+import { StyledButton } from './Button.styles'
 
-
-const StyledButton = styled.button`
-width: 25px;
-height: 25px;
-background-color: ${({theme})=> theme.colors.grey};
-border-radius: 50px;
-border: none;
-color: white;
-display: flex;
-align-items: center;
-justify-content: center;
-
-svg{
-  width: 100%;
-  height: 100%;
-}
-`
-
-const Button = () => {
+const Button = (props) => {
   return (
-    <StyledButton><DeleteIcon/></StyledButton>
+    <StyledButton {...props}>
+      <DeleteIcon />
+    </StyledButton>
   )
 }
 
 export default Button
-
