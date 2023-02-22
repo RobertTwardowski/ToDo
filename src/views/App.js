@@ -3,25 +3,44 @@ import './App.css'
 import Userslist from 'components/organisms/UsersList/UsersList'
 import styled, { ThemeProvider } from 'styled-components'
 import { GlobalStyle } from 'assets/styles/GlobalStyle'
-import {theme} from 'assets/styles/theme'
-import { BrowserRouter as Router,Switch, Route,Link } from 'react-router-dom'
+import { theme } from 'assets/styles/theme'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Form from 'components/organisms/Form/Form'
+import Navigation from 'components/organisms/Navigation/Navigation'
+import { UsersProvider} from 'Provider/UsersProvider'
 
 const Wrapper = styled.div`
-  background-color: ${({theme})=> theme.colors.LightGrey};
+  background-color: ${({ theme }) => theme.colors.LightGrey};
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
   height: 100vh;
 `
 
+
+
 function App () {
+
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle/>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
         <Wrapper>
-          <Userslist />
+          <UsersProvider>
+            <Navigation />
+            <Switch>
+              <Route path='/add-user'>
+                <Form/>
+              </Route>
+              <Route path='/'>
+                <Userslist />
+              </Route>
+            </Switch>
+          </UsersProvider>
         </Wrapper>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Router>
   )
 }
 

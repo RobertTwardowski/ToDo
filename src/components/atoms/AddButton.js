@@ -10,7 +10,7 @@ export const AddButton = styled.button`
   color: ${({ theme }) => theme.colors.darkPurple};
   margin: 10px 0;
 
-  &:focus {
+  &:hover {
     outline: none;
     box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.3);
   }
