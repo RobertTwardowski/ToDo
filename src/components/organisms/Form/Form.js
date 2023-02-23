@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react'
+import React,{useReducer,useContext} from 'react'
 import { Wrapper } from 'components/organisms/UsersList/UsersList.styles'
 import FormField from 'components/molecules/FormField/FormField'
 import { AddButton } from 'components/atoms/AddButton'
@@ -9,20 +9,35 @@ const initialFormState = {
     attendance: '',
     average: ''
   }
+  const reducer = (state, action) =>
+  {
+    switch(action.type){
+      case "INPUT CHANGE" :
+        return{
+          ...state,
+          [action.field]: action.value,
+        }
+        case 'CLEAR VALUES':
+          return initialFormState
+        default:
+          return state;
+    }
+  }
 
 const Form = () => {
-  const [formValue, setFormValue] = useState(initialFormState)
+  const [formValue, dispatch] = useReducer(reducer, initialFormState)
   const context = useContext(UsersContext)
   const handleFormChange = e => {
-    setFormValue({
-      ...formValue,
-      [e.target.name]: e.target.value
+    dispatch({
+      type:'INPUT CHANGE',
+      field: e.target.name,
+      value: e.target.value,
     })
   }
   const handleSubmitUser = (e) => {
     e.preventDefault()
     context.handleAddUser(formValue)
-    setFormValue(initialFormState)
+    dispatch({type:'CLEAR VALUES'})
   }
 
   return (

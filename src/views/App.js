@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: row;
   height: 100vh;
+  width: 100%;
 `
 
 
@@ -29,6 +30,7 @@ function App () {
         <Wrapper>
           <UsersProvider>
             <Navigation />
+            <Wrapper>
             <Switch>
               <Route path='/add-user'>
                 <Form/>
@@ -37,6 +39,7 @@ function App () {
                 <Userslist />
               </Route>
             </Switch>
+            </Wrapper>
           </UsersProvider>
         </Wrapper>
       </ThemeProvider>

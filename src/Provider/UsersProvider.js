@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { users as usersData } from 'Data/Users'
+import {Provider} from 'Provider/UsersProvider.styles'
 
 export const UsersContext = React.createContext({
   users: [],
@@ -26,14 +27,16 @@ export const UsersProvider = ({ children }) => {
   }
 
   return (
-    <UsersContext.Provider
-      value={{
-        users,
-        handleAddUser,
-        deleteUser
-      }}
-    >
-      {children}
-    </UsersContext.Provider>
+      <UsersContext.Provider
+        value={{
+          users,
+          handleAddUser,
+          deleteUser
+        }}
+      >
+        <Provider>{children}</Provider>
+        
+      </UsersContext.Provider>
+    
   )
 }
